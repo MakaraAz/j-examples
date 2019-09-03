@@ -3,25 +3,27 @@ package config;
 import beans.Competitor;
 import beans.User;
 
-public class Config {
+import java.io.Serializable;
 
-    private static User user = null;
-    private static Competitor[] competitors = null;
+public class Config implements Serializable {
+
+    private User user = null;
+    private Competitor[] competitors = null;
 
 
-    public static User getUser() {
+    public User getUser() {
         return user;
     }
 
-    public static void setUser(User user) {
-        Config.user = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public static Competitor[] getCompetitors() {
+    public Competitor[] getCompetitors() {
         return competitors;
     }
 
-    public static void setCompetitors(Competitor[] competitors) {
-        Config.competitors = competitors;
+    public void setCompetitors(Competitor[] competitors) {
+        this.competitors = competitors;
     }
 }
