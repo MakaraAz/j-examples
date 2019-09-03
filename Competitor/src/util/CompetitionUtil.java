@@ -2,7 +2,7 @@ package util;
 
 import beans.Competitor;
 import beans.User;
-import config.Config;
+import config.Initialization;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class CompetitionUtil {
             Competitor competitor = registerCompetitor();
             competitors[i] = competitor;
         }
-        Config.setCompetitors(competitors);
+        Initialization.config.setCompetitors(competitors);
         System.out.println("All competitors successfully registered");
         return competitors;
     }
@@ -51,18 +51,17 @@ public class CompetitionUtil {
     }
 
     public static void printCompetitors(){
-        printCompetitors(Config.getCompetitors());
+        printCompetitors(Initialization.config.getCompetitors());
     }
 
     public static boolean startCompetiton(){
-        int winner = 2;
-
+        int winner = (int)(Math.random()*Initialization.config.getCompetitors().length);
         System.out.println("Guess winner?");
         Scanner sc = new Scanner(System.in);
         int guessWinner = sc.nextInt();
         if(guessWinner==winner){
             increasePoint();
-            System.out.println("You won! Your point increases to "+Config.getUser().getPoint());
+            System.out.println("You won! Your point increases to "+Initialization.config.getUser().getPoint());
             return true;
         }else{
             System.out.println("You failed!");
@@ -71,16 +70,16 @@ public class CompetitionUtil {
     }
 
     public static void increasePoint(){
-        User user = Config.getUser();
+        User user = Initialization.config.getUser();
         user.setPoint(user.getPoint()+10);
     }
 
     public static void showPoint(){
-        System.out.println("Your point: " + Config.getUser().getPoint());
+        System.out.println("Your point: " + Initialization.config.getUser().getPoint());
     }
 
     public static void increaseCompetitors(){
-        Competitor[] competitorsOld = Config.getCompetitors();
+        Competitor[] competitorsOld = Initialization.config.getCompetitors();
         if (competitorsOld==null || competitorsOld.length==0){
             System.out.println("you must be select 1st menu to insert competitors");
             return;
@@ -97,6 +96,6 @@ public class CompetitionUtil {
             competitorsNew[i] = registerCompetitor();
         }
 
-        Config.setCompetitors(competitorsNew);
+        Initialization.config.setCompetitors(competitorsNew);
     }
 }

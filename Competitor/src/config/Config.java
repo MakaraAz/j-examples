@@ -10,6 +10,13 @@ public class Config implements Serializable {
     private User user = null;
     private Competitor[] competitors = null;
 
+    public Config() {
+    }
+
+    public Config(User user) {
+        this.user = user;
+    }
+
 
     public User getUser() {
         return user;
@@ -17,6 +24,7 @@ public class Config implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+        Initialization.refreshConfig();
     }
 
     public Competitor[] getCompetitors() {
@@ -25,5 +33,6 @@ public class Config implements Serializable {
 
     public void setCompetitors(Competitor[] competitors) {
         this.competitors = competitors;
+        Initialization.refreshConfig();
     }
 }
