@@ -1,2 +1,5 @@
-*.dat
 /.idea
+/.idea/workspace.xml
+.idea/workspace.xml
+workspace.xml
+*.dat
