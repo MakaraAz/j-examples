@@ -58,7 +58,6 @@ public class CompetitionUtil {
     public static boolean startCompetiton(){
 //        int winner = (int)(Math.random()*Initialization.config.getCompetitors().length);
         int winner = setRandom(Initialization.config.getCompetitors().length);
-        System.out.println("winner 2 = " + winner);
         System.out.println("Guess winner?");
         Scanner sc = new Scanner(System.in);
         int guessWinner = sc.nextInt();
