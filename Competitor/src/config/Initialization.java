@@ -7,12 +7,16 @@ public class Initialization {
     public static Config config = null;
 
     public static void initializeConfig(User user){
-        config = new Config(user);
+        config = new Config();
         try{
             Object configObj = FileUtil.readObject("config.dat");
-            config = (Config) configObj;
+            if(configObj != null)
+                config = (Config) configObj;
+            else
+                config.setUser(user);
         }catch(Exception ex){
 //            ex.printStackTrace();
+            config.setUser(user);
         }
     }
 

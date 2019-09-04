@@ -72,6 +72,7 @@ public class CompetitionUtil {
     public static void increasePoint(){
         User user = Initialization.config.getUser();
         user.setPoint(user.getPoint()+10);
+        Initialization.config.setUser(user);
     }
 
     public static void showPoint(){

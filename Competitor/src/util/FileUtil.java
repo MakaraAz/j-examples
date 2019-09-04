@@ -19,7 +19,8 @@ public class FileUtil {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))){
             obj = ois.readObject();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            ignore
+//            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

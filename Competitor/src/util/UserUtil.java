@@ -1,7 +1,7 @@
 package util;
 
 import beans.User;
-import config.Config;
+import config.Initialization;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class UserUtil {
 
     public static User login(String username, String password){
         if("Aziz".equals(username) && "12345".equals(password))
-            return new User();
+            return new User(username, password);
 
         throw new IllegalArgumentException("Username or Password is incorrect!");
     }
@@ -21,7 +21,7 @@ public class UserUtil {
         System.out.println("Please type your password:");
         String password = sc.nextLine();
         User user = UserUtil.login(username,password);
-        Config.setUser(user);
+//        Initialization.config.setUser(user);
         return user;
     }
 
