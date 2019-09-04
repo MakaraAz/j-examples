@@ -4,6 +4,7 @@ import beans.Competitor;
 import beans.User;
 import config.Initialization;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class CompetitionUtil {
@@ -55,7 +56,9 @@ public class CompetitionUtil {
     }
 
     public static boolean startCompetiton(){
-        int winner = (int)(Math.random()*Initialization.config.getCompetitors().length);
+//        int winner = (int)(Math.random()*Initialization.config.getCompetitors().length);
+        int winner = setRandom(Initialization.config.getCompetitors().length);
+        System.out.println("winner 2 = " + winner);
         System.out.println("Guess winner?");
         Scanner sc = new Scanner(System.in);
         int guessWinner = sc.nextInt();
@@ -98,5 +101,10 @@ public class CompetitionUtil {
         }
 
         Initialization.config.setCompetitors(competitorsNew);
+    }
+
+    public static int setRandom(int lenght){
+        Random random = new Random();
+        return random.nextInt(lenght)+1;
     }
 }
